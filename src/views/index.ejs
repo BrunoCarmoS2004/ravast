@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokédex</title>
+    <link rel="stylesheet" href="Style.css">
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 98vw;
+            height: 90vh;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            width: 90%;
+            height: 90%;
+        }
+        .divForm{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 20%;
+            height: 40%;
+            background-color: aqua;
+        }
+    </style>
+</head>
+<body>
+    <h1>Pokédex</h1>
+    <div class="divForm">
+        <form id="pokemonForm" class="pokemonForm">
+            <label for="nome">Nome Pokémon:</label>
+            <input type="text" name="nome" id="nome" required>
+        
+            <label for="tipo">Tipo Pokémon:</label>
+            <input type="text" name="tipo" id="tipo" required>
+        
+            <label for="altura">Altura Pokémon:</label>
+            <input type="number" name="altura" id="altura" step="0.1" required>
+        
+            <label for="peso">Peso Pokémon:</label>
+            <input type="number" name="peso" id="peso" step="0.1" required>
+        
+            <label for="nivelPoder">Nível de Poder:</label>
+            <input type="number" name="nivelPoder" id="nivelPoder" required>
+        
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+    <ul>
+        <% pokemons.forEach(function(pokemon) { %>
+            <li>
+                <a href="/pokemon/<%= pokemon.id %>"><%= pokemon.nome %></a> - <%= pokemon.tipo %> - <%= pokemon.altura %> - <%= pokemon.peso %> - <%= pokemon.nivelPoder %>
+            </li>
+        <% }); %>
+    </ul>
+    <script>
+        document.getElementById('pokemonForm').addEventListener('submit', async function (e) {
+            e.preventDefault();
+    
+            const formData = new FormData(this);
+            const formParams = new URLSearchParams(formData); // Converte os dados do formulário
+    
+            try {
+                const response = await fetch('/criar', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: formParams.toString(),
+                });
+                console.log(formParams)
+
+                if (response.ok) {
+                    alert("Pokémon adicionado com sucesso!");
+                    this.reset();
+                    location.reload();
+                } else {
+                    alert("Erro ao adicionar Pokémon.");
+                    location.reload();
+                }
+            } catch (error) {
+                console.error('Erro:', error);
+            }
+        });
+    </script>
+</body>
+</html>
