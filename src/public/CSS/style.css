@@ -1,0 +1,30 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 30px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 300px;
+}
+
+form input, form select, form button {
+    margin-bottom: 10px;
+}
+
+#trainersList {
+    margin-top: 20px;
+}
+
+.trainer {
+    margin-bottom: 15px;
+}
+
+.pokemon {
+    margin-left: 20px;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+    <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+    <h1>Pokedex</h1>
+    <section>
+        <h2>Adicionar Treinador</h2>
+        <form id="addTrainerForm">
+            <input type="text" id="trainerName" placeholder="Nome do Treinador" required>
+            <select id="trainerGender">
+                <option value="Masculino">Masculino</option>
+                <option value="Feminino">Feminino</option>
+                <option value="Outro">Outro</option>
+            </select>
+            <input type="number" id="trainerHeight" placeholder="Altura" required>
+            <input type="number" id="trainerWeight" placeholder="Peso" required>
+            <button type="submit">Adicionar Treinador</button>
+        </form>
+    </section>
+            <select id="trainerSelect" required></select>
+            <input type="text" id="pokemonName" placeholder="Nome do Pokémon" required>
+            <input type="text" id="pokemonType" placeholder="Tipo" required>
+            <input type="number" id="pokemonHeight" placeholder="Altura" required>
+            <input type="number" id="pokemonWeight" placeholder="Peso" required>
+            <input type="number" id="pokemonPowerLevel" placeholder="Nível de Poder" required>
+            <button type="submit">Adicionar Pokémon</button>
+        </form>
+    </section>
+    <section>
+        <h2>Lista de Treinadores e os Pokémons</h2>
+        <div id="trainersList"></div>
+    </section>
+    <script src="../JS/script.js"></script>
+</body>
+</html>
